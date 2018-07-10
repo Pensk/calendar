@@ -1,0 +1,21 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: calendar
+  password: calendar
+  socket: /tmp/mysql.sock
+
+development:
+  <<: *default
+  database: calendar_dev
+
+test:
+  <<: *default
+  database: calendar_test
+
+production:
+  <<: *default
+  database: calendar
+  username: calendar
+  password: <%= ENV['TINKER_DATABASE_PASSWORD'] %>
