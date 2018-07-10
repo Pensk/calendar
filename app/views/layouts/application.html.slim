@@ -1,0 +1,10 @@
+doctype html
+html
+  head
+    title Calendar
+    = csrf_meta_tags
+    = yield :javascript_pack
+  body
+  	p.notice = notice
+    p.alert = alert
+    = yield
