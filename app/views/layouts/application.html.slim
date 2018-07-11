@@ -3,6 +3,8 @@ html
   head
     title Calendar
     = csrf_meta_tags
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = yield :javascript_pack
   body
   	p.notice = notice

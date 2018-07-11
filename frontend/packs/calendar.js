@@ -1,2 +1,2 @@
 import 'javascripts/calendar';
-import 'stylesheets/application';
+import 'stylesheets/calendar';

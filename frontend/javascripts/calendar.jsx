@@ -8,7 +8,7 @@ class Calendar extends React.Component {
 
 	render() {
 		return(
-			<div className="container">
+			<div className="calendar container">
 				<h1>Calendar</h1>
 			</div>
 		);
@@ -18,7 +18,7 @@ class Calendar extends React.Component {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  const node = document.getElementById('calendar');
+  const node = document.getElementById('calendar-wrapper');
   const data = JSON.parse(node.getAttribute('data'));
   ReactDOM.render(
     <Calendar {...data} />,
