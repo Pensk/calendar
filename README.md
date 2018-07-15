@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An example calendar app written using Rails, Webpacker, and React
 
-Things you may want to cover:
+### how it works
 
-* Ruby version
+Webpacker delivers js & scss out of the frontend/ folder.
 
-* System dependencies
+React is injected into individual views with the `javascript_pack_tag`
 
-* Configuration
+### setup
 
-* Database creation
+run `yarn`/`bundle`
 
-* Database initialization
+database is setup for a mysql user with username/password 'calendar'/'calendar' on
+calendar_dev, calendar_test, and calendar
 
-* How to run the test suite
+run `bin/webpack-dev-server` to start compiling and serving javascript assets
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+and finally `rails s`
