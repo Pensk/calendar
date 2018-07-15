@@ -2,26 +2,36 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import DatePicker from './datepicker';
+import Schedule from './schedule';
 
 class Calendar extends React.Component {
 	constructor(props) {
 		super(props);
 
-    this.state = {date: props.date};
+    this.state = {date: new Date(this.props.date)};
 
+    this.changeDate = this.changeDate.bind(this);
 	}
+
+  changeDate(date) {
+    this.setState({date: date});
+  }
 
 	render() {
 		return(
 			<div className="calendar container">
 				<h1>Calendar</h1>
-        <p>Today's date: {this.state.date}</p>
         <div className="row">
           <div className="col-lg-6">
-            <DatePicker />
+            <DatePicker
+              date={this.state.date}
+              changeDate={this.changeDate}
+            />
           </div>
           <div className="col-lg-6">
-            Schedule
+            <Schedule
+              date={this.state.date}
+            />
           </div>
         </div>
 			</div>
