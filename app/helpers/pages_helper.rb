@@ -1,7 +1,7 @@
 module PagesHelper
   def calendarData
     {
-      calendar: true
+      date: Time.zone.now.to_date
     }
   end
 end
