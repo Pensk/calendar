@@ -3,10 +3,12 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5",
+    "axios": "^0.18.0",
     "babel-preset-react": "^6.24.1",
     "bootstrap": "^4.1.1",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
+    "react-day-picker": "^7.1.10",
     "react-dom": "^16.4.1"
   },
   "devDependencies": {
