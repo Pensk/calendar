@@ -42,6 +42,8 @@ class Calendar extends React.Component {
           <div className="col-lg-6">
             <Schedule
               date={this.state.date}
+              user={this.state.user}
+              userId={this.state.userId}
             />
           </div>
         </div>
