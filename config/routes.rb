@@ -4,5 +4,5 @@ Rails.application.routes.draw do
 
   resources :users, only: [:create]
 
-  resources :schedules, only: [:create]
+  resources :schedules, only: [:index, :create], defaults: {format: :json}
 end

@@ -1,5 +1,10 @@
 class SchedulesController < ApplicationController
 
+  def index
+    date = Date.parse(params[:date])
+    @schedules = Schedule.schedules_by_day(date)
+  end
+
   def create
     user = User.find(params[:userId])
     schedule = user.schedules.new(schedule_params)

@@ -22,7 +22,15 @@ class Calendar extends React.Component {
 	}
 
   changeDate(date) {
-    this.setState({date, dateWrapper: moment(date)});
+    const dateWrapper = moment(date);
+    this.setState({date, dateWrapper});
+    axios.get('/schedules', {params: {
+      date: dateWrapper.format('YYYY-MM-DD')
+    }}).then(resp => {
+      this.setState({schedules: resp.data});
+    }).catch(error => {
+      console.log(error);
+    });
   }
 
   setUser(user, userId) {
