@@ -1,6 +1,6 @@
 module PagesHelper
   def calendarData
-    scheduled_days = Schedule.select('date(starttime) as day').group('date(starttime)').pluck('date(starttime)')
+    scheduled_days = Schedule.scheduled_days
     schedules = Schedule.schedules_by_day(Time.zone.now).order(:starttime).map do |s|
       {
         user: s.user.username,

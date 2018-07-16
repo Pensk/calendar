@@ -9,7 +9,11 @@ class SchedulesController < ApplicationController
     user = User.find(params[:userId])
     schedule = user.schedules.new(schedule_params)
     schedule.save
-    render json: Schedule.schedules_by_day(schedule.starttime)
+    @schedules = Schedule.schedules_by_day(schedule.starttime)
+  end
+
+  def scheduleddays
+    render json: Schedule.scheduled_days
   end
 
   private
