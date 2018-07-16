@@ -20,17 +20,11 @@ class Calendar extends React.Component {
 	}
 
   changeDate(date) {
-    this.setState({date: date});
+    this.setState({date});
   }
 
-  setUser(user) {
-    axios.post('/users/create', {
-      username: user
-    }).then(resp => {
-      console.log(resp);
-    }).catch(error => {
-      console.log(error);
-    });
+  setUser(user, userId) {
+    this.setState({user, userId});
   }
 
 	render() {
