@@ -15,10 +15,11 @@ class Calendar extends React.Component {
     const date = new Date(this.props.date);
     const dateWrapper = moment(date);
 
-    this.state = {date, dateWrapper, user: null, userId: null, schedules: this.props.schedules};
+    this.state = {date, dateWrapper, user: null, userId: null, schedules: this.props.schedules, scheduled_days: this.props.scheduled_days};
 
     this.changeDate = this.changeDate.bind(this);
     this.setUser =  this.setUser.bind(this);
+    this.setSchedules = this.setSchedules.bind(this);
 	}
 
   changeDate(date) {
@@ -37,6 +38,15 @@ class Calendar extends React.Component {
     this.setState({user, userId});
   }
 
+  setSchedules(data) {
+    this.setState({schedules: data});
+    axios.get('/schedules/scheduled_days').then(resp => {
+      this.setState({scheduled_days: resp.data});
+    }).catch(error => {
+      console.log(error);
+    })
+  }
+
 	render() {
 		return(
 			<div className="calendar container">
@@ -45,7 +55,7 @@ class Calendar extends React.Component {
         <div className="calendar-row row">
           <div className="col-lg-6">
             <DatePicker
-              scheduledDays={this.props.scheduled_days}
+              scheduledDays={this.state.scheduled_days}
               date={this.state.date}
               changeDate={this.changeDate}
             />
@@ -56,6 +66,7 @@ class Calendar extends React.Component {
               user={this.state.user}
               userId={this.state.userId}
               schedules={this.state.schedules}
+              setSchedules={this.setSchedules}
             />
           </div>
         </div>
