@@ -12,7 +12,7 @@ class SchedulesController < ApplicationController
     @schedules = Schedule.schedules_by_day(schedule.starttime)
   end
 
-  def scheduleddays
+  def scheduled_days
     render json: Schedule.scheduled_days
   end
 
