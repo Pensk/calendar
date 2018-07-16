@@ -19,6 +19,7 @@ class Calendar extends React.Component {
 
     this.changeDate = this.changeDate.bind(this);
     this.setUser =  this.setUser.bind(this);
+    this.setSchedules = this.setSchedules.bind(this);
 	}
 
   changeDate(date) {
@@ -35,6 +36,10 @@ class Calendar extends React.Component {
 
   setUser(user, userId) {
     this.setState({user, userId});
+  }
+
+  setSchedules(data) {
+    this.setState({schedules: data});
   }
 
 	render() {
@@ -56,6 +61,7 @@ class Calendar extends React.Component {
               user={this.state.user}
               userId={this.state.userId}
               schedules={this.state.schedules}
+              setSchedules={this.setSchedules}
             />
           </div>
         </div>

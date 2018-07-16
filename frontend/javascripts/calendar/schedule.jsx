@@ -10,15 +10,15 @@ const AddEvent = (props) => {
         :
         <form className="form-inline" onSubmit={props.submitEvent}>
           <div className="form-group">
-            <input className="form-control" type="text" name="title" placeholder="title" onChange={props.handleChange} />
-            <input className="form-control" type="text" name="description" placeholder="description" onChange={props.handleChange} />
+            <input className="form-control" type="text" name="title" placeholder="title" value={props.title} onChange={props.handleChange} />
+            <input className="form-control" type="text" name="description" placeholder="description" value={props.description} onChange={props.handleChange} />
           </div>
           <div className="form-group">
-            <input className="form-control" type="text" name="starttime" placeholder="start time (ex 14:00)" onChange={props.handleChange} />
-            <input className="form-control" type="text" name="duration" placeholder="duration (min)" onChange={props.handleChange} />
+            <input className="form-control" type="text" name="starttime" placeholder="start time (ex 14:00)" value={props.starttime} onChange={props.handleChange} />
+            <input className="form-control" type="text" name="duration" placeholder="duration (min)" value={props.duration} onChange={props.handleChange} />
           </div>
           <div className="form-group">
-            <input type="submit" className="btn btn-info" value="Add Event" />
+            <input type="submit" className="btn btn-info" value="Add Event" disabled={props.invalid ? 'disabled' : ''}/>
           </div>
         </form>
 
@@ -52,27 +52,39 @@ class Schedule extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {title: '', description: '', duration: '', starttime: ''};
+
     this.submitEvent = this.submitEvent.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
+
+  invalid() {
+    return this.state.title.trim() === '' ||
+           this.state.description.trim() === '' ||
+           this.state.duration.trim() === '' ||
+           this.state.starttime.trim() === '';
+   }
 
   handleChange(e) {
     this.setState({[e.target.name]: e.target.value})
   }
 
   submitEvent(e) {
+    e.preventDefault();
+
     const data = {
       title: this.state.title,
       description: this.state.description,
       duration: this.state.duration * 1,
       starttime: this.props.date.format('Y-M-D') + ' ' + this.state.starttime
     }
-    e.preventDefault();
+
     axios.post('/schedules', {
       userId: this.props.userId,
       schedule: data
     }).then(resp => {
-      console.log(resp.data);
+      this.setState({title: '', description: '', duration: '', starttime: ''});
+      this.props.setSchedules(resp.data);
     }).catch(error => {
       console.log(error);
     });
@@ -82,7 +94,16 @@ class Schedule extends React.Component {
     return(
       <div className="schedule">
         <h3>{this.props.date.format('MMMM Do YYYY')}</h3>
-        <AddEvent user={this.props.user} handleChange={this.handleChange} submitEvent={this.submitEvent} />
+        <AddEvent
+          user={this.props.user}
+          handleChange={this.handleChange}
+          submitEvent={this.submitEvent}
+          invalid={this.invalid()}
+          title={this.state.title}
+          description={this.state.description}
+          duration={this.state.duration}
+          starttime={this.state.starttime}
+        />
         <Schedules schedules={this.props.schedules} />
       </div>
     );
