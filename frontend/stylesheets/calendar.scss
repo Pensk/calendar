@@ -2,4 +2,20 @@
   border: 1px solid black;
   padding: 15px 10px;
   border-radius: 4px;
+
+  .user-select {
+    margin: 40px 15px;
+  }
+
+  .calendar-row {
+    text-align: center;
+
+    .datepicker {
+      margin-top: 25px;
+    }
+
+    .schedule {
+      margin-top: 25px;
+    }
+  }
 }

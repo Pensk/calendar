@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 
   def create
-    @user = User.find_or_create_by(user_params)
-    render json: {id: @user.id, username: @user.username}
+    user = User.find_or_create_by(user_params)
+    render json: {id: user.id, username: user.username}
   end
 
   private

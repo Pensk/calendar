@@ -7,9 +7,8 @@ class Schedule extends React.Component {
 
   render() {
     return(
-      <div>
-        <h3>Schedule</h3>
-        {this.props.date.toDateString()}
+      <div className="schedule">
+        <h3>{this.props.date.toDateString()}</h3>
       </div>
     );
   }

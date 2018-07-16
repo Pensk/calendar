@@ -16,8 +16,7 @@ class DatePicker extends React.Component {
 
   render() {
     return(
-      <div>
-        <h3>Date</h3>
+      <div className="datepicker">
         <DayPicker
           onDayClick={this.handleDayClick}
           selectedDays={this.props.date}

@@ -32,7 +32,7 @@ class Calendar extends React.Component {
 			<div className="calendar container">
 				<h1>Calendar</h1>
         <UserSelect user={this.state.user} setUser={this.setUser} />
-        <div className="row">
+        <div className="calendar-row row">
           <div className="col-lg-6">
             <DatePicker
               date={this.state.date}
