@@ -2,4 +2,44 @@
   border: 1px solid black;
   padding: 15px 10px;
   border-radius: 4px;
+
+  .user-select {
+    margin: 40px 15px;
+  }
+
+  .calendar-row {
+    text-align: center;
+
+    .datepicker {
+      margin-top: 25px;
+
+      .DayPicker-Day--highlighted {
+        background-color: #edb22a;
+      }
+    }
+
+    .schedule {
+      margin-top: 25px;
+
+      .schedule-item {
+        text-align: left;
+        margin: 15px;
+        padding: 10px 25px;
+        border: 1px solid red;
+        border-radius: 8px;
+
+        .user {
+          text-align: right;
+
+          .username {
+            font-weight: bold;
+          }
+        }
+
+        .time {
+          text-align: right;
+        }
+      }
+    }
+  }
 }

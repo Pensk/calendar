@@ -56,7 +56,7 @@ class UserSelect extends React.Component {
       <h3>Hi, {this.props.user}!</h3>;
 
     return(
-      <div>
+      <div className="user-select">
         { this.state.loading ?
           <p>Loading ...</p>
           :
