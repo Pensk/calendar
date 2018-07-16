@@ -3,11 +3,15 @@ import axios from '../lib/axios'
 
 const UserForm = (props) => {
   return(
-    <form onSubmit={props.handleSubmit} className="form-inline">
+    <div className="user-form">
       {props.error && <p>There seems to have been an error... Try again</p>}
-      <input type="text" placeholder="What's your name?" value={props.username} onChange={props.handleUserNameChange} />
-      <input type="submit" value="submit" />
-    </form>
+      <form onSubmit={props.handleSubmit} className="form-inline">
+        <div className="form-group">
+          <input className="form-control" type="text" placeholder="What's your name?" value={props.username} onChange={props.handleUserNameChange} />
+          <input className="form-control" type="submit" value="submit" />
+        </div>
+      </form>
+    </div>
   );
 }
 
