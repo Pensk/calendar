@@ -6,6 +6,6 @@ class Schedule < ApplicationRecord
   end
 
   def self.schedules_by_day day
-    Schedule.where(starttime: day.beginning_of_day..day.end_of_day)
+    Schedule.where(starttime: day.beginning_of_day..day.end_of_day).order(:starttime)
   end
 end

@@ -1,7 +1,7 @@
 module PagesHelper
   def calendarData
     scheduled_days = Schedule.scheduled_days
-    schedules = Schedule.schedules_by_day(Time.zone.now).order(:starttime).map do |s|
+    schedules = Schedule.schedules_by_day(Time.zone.now).map do |s|
       {
         user: s.user.username,
         title: s.title,

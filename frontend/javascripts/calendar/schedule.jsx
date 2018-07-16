@@ -36,7 +36,7 @@ const Schedules = (props) => {
       </div>
       <div className="col-6">
         <div className="user">by <span className="username">{v.user}</span></div>
-        <div className="time">{moment(v.starttime).format('h:mm')} - {moment(v.starttime).add(v.duration, 'minutes').format('h:mm')}</div>
+        <div className="time">{moment(v.starttime).format('HH:mm')} - {moment(v.starttime).add(v.duration, 'minutes').format('HH:mm')}</div>
       </div>
     </div>
   );
